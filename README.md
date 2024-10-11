@@ -4,6 +4,9 @@
 
 ## Welcome! 👋
 
+https://www.youtube.com/watch?v=2MpZwFoBPjQ
+
+
 Thanks for checking out this front-end coding challenge.
 
 [Frontend Mentor](https://www.frontendmentor.io) challenges help you improve your coding skills by building realistic projects.
