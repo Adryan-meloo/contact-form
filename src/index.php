@@ -25,82 +25,21 @@
   <title>Frontend Mentor | Contact form</title>
 </head>
 
-<?php
 
-$FirstNameError = "";
-$LastNameError = "";
-$EmailError = "";
-$flexRadioDefaultError = "";
-$messageError = "";
-$flexRadioDefault2Error = "";
-
-$FirstName = "";
-$LastName = "";
-$Email = "";
-$flexRadioDefault = "";
-$message = "";
-$flexRadioDefault2 = "";
-
-$cont = 0;
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  if (empty($_POST["PrimeiroNome"])) {
-    $FirstNameError = "This field is required";
-  }else{
-    $FirstName = test_input($_POST["PrimeiroNome"]);
-  }
-  if (empty($_POST["SegundoNome"])) {
-    $LastNameError = "This field is required";
-  }else{
-    $LastName = test_input($_POST["SegundoNome"]);
-  }
-
-  if (empty($_POST["email"])) {
-    $EmailError = "Please enter valid email address";
-  }else{
-    $Email = test_input($_POST["email"]);
-  }
-  if (empty($_POST["flexRadioDefault"])) {
-    $flexRadioDefaultError = "Please select a query type";
-  }else{
-    $flexRadioDefault = test_input($_POST["flexRadioDefault"]);
-  }
-
-  if (empty($_POST["message"])) {
-    $messageError = "This field is required";
-  }else{
-    $message = test_input($_POST["message"]);
-  }
-
-  if (empty($_POST["flexRadioDefault2"])) {
-    $flexRadioDefault2Error = "To submit this form, please consent to being contacted";
-  }else{
-    $flexRadioDefault2 = test_input($_POST["flexRadioDefault2"]);
-  }
-
-  function test_input($data) {
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-}
-}
-
-?>
 
 <body>
   <div class="container-main">
     <p>Contact Us</p>
-    <form class="row g-3" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+    <form class="row g-3"  method="POST" action="includes/formhandler.php">
       <div class="col-md-6">
         <label for="inputEmail4" class="form-label">First Name *</label>
-        <input name="PrimeiroNome" type="text" class="form-control" id="inputName" value="<?php echo $FirstName?>"/>
-        <div style="color:red"><?php echo $FirstNameError?></div>
+        <input name="firstname" type="text" class="form-control" id="inputName"/>
+
       </div>
       <div class="col-md-6">
         <label for="inputPassword4" class="form-label">Last Name *</label>
-        <input name="SegundoNome" type="text" class="form-control" id="inputLast" value="<?php echo $LastName?>" />
-        <div style="color:red"><?php echo $LastNameError?></div>
+        <input name="lastname" type="text" class="form-control" id="inputLast" />
+
       </div>
       <div class="col-12">
         <label for="inputAddress" class="form-label">Email Address *</label>
@@ -110,17 +49,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           class="form-control"
           id="inputAddress"
           placeholder=""
-          value="<?php echo $Email?>"
           />
       </div>
-      <div style="color:red"><?php echo $EmailError?></div>
+
       <div class="content-check">
         <div class="form-check">
           <input
             class="form-check-input"
             type="radio"
             name="flexRadioDefault"
-            id="flexRadioDefault1"
+            id="flexRadioDefault"
             
             />
           <label class="form-check-label" for="flexRadioDefault1">
@@ -139,7 +77,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           </label>
         </div>
       </div>
-      <div style="color:red"><?php echo $flexRadioDefaultError?></div>
       <div class="mb-3">
         <label for="exampleFormControlTextarea1" class="form-label">Message *</label>
         <textarea
@@ -148,23 +85,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           rows="3"
           name="message"
           ></textarea>
-          <div style="color:red"><?php echo $messageError?></div>
+  
       </div>
 
-      <div id="consent" class="form-check">
+      <div class="form-check">
         <input
           class="form-check-input"
           type="checkbox"
           value="check"
-          name="flexRadioDefault2"
-          id="flexCheckDefault"
+          name="consent"
+          id="consent"
           
            />
         <label class="form-check-label" for="flexCheckDefault">
           I consent to being contacted by the team *
         </label>
         <div style="color:red">
-          <?php echo $flexRadioDefault2Error?>
         </div>
       </div>
       <button type="submit" class="btn btn-primary" id="myBtn">

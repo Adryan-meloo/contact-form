@@ -2,14 +2,15 @@
 Green 600 (medium): hsl(169, 82%, 27%)
 Red: hsl(0, 66%, 54%) */
 
-.container-main {
+.container-main { 
   border-radius: 15px;
   background-color: white;
-  width: 50%;
+  width: 40%;
+  height: 95%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  padding: 20px 15px;
+  padding: 25px 20px;
 }
 
 .container-main p {
@@ -25,8 +26,8 @@ Red: hsl(0, 66%, 54%) */
   background-color: hsl(169, 82%, 27%);
 }
 
-#consent{
-  margin: 15px 0 30px;
+textarea{
+  max-height: 80px;
 }
 
 
