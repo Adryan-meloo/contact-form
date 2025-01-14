@@ -15,4 +15,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     echo $message;
     echo "<br>";
     echo $consent;
+
+    header("Location: ../index.php");
+} else {
+    
 }
